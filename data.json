@@ -1,0 +1,13 @@
+[
+    {
+        "category": "Футболка",
+        "products": [
+            {
+                "name": "Футболка",
+                "description": "Настоящее х б",
+                "price": 100,
+                "photo_url": "AgACAgIAAxkBAAIDcWfhTPc5Hw5Byrz1opQGuc24z2fGAAI87jEbMtQJS1jMDbvAe4XIAQADAgADeQADNgQ"
+            }
+        ]
+    }
+]

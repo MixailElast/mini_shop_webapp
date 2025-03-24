@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин RezinaUzBot</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        .category { margin-top: 30px; }
+        .product { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 10px; }
+        img { width: 100%; max-width: 200px; display: block; margin: 10px auto; border-radius: 8px; }
+        button { padding: 8px 16px; margin-top: 10px; display: block; width: 100%; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Магазин RezinaUzBot</h1>
+    <div id="catalog"></div>
+
+    <script>
+        async function loadProducts() {
+            const response = await fetch("data.json"); // JSON с категориями и товарами
+            const data = await response.json();
+            const catalogDiv = document.getElementById("catalog");
+
+            data.forEach(category => {
+                const catDiv = document.createElement("div");
+                catDiv.className = "category";
+                catDiv.innerHTML = `<h2>${category.category}</h2>`;
+
+                category.products.forEach(product => {
+                    const productDiv = document.createElement("div");
+                    productDiv.className = "product";
+                    productDiv.innerHTML = `
+                        <h3>${product.name}</h3>
+                        <img src="https://api.telegram.org/file/bot<YOUR_BOT_TOKEN>/${product.photo_url}" alt="${product.name}">
+                        <p>${product.description}</p>
+                        <p><b>Цена: </b>${product.price}₽</p>
+                        <button onclick='orderProduct("${product.name}", ${product.price})'>Заказать</button>
+                    `;
+                    catDiv.appendChild(productDiv);
+                });
+
+                catalogDiv.appendChild(catDiv);
+            });
+        }
+
+        function orderProduct(name, price) {
+            const order = { product: name, price: price };
+            Telegram.WebApp.sendData(JSON.stringify(order));
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>
