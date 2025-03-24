@@ -6,22 +6,26 @@
     <title>Магазин RezinaUzBot</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { text-align: center; }
-        .category { margin-top: 30px; }
-        .product { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 10px; }
-        img { width: 100%; max-width: 200px; display: block; margin: 10px auto; border-radius: 8px; }
-        button { padding: 8px 16px; margin-top: 10px; display: block; width: 100%; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f0f0f0, #ffffff); margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .category { margin-top: 40px; }
+        .category h2 { border-bottom: 2px solid #4CAF50; padding-bottom: 5px; color: #4CAF50; }
+        .product { background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 10px; padding: 15px; margin: 20px 0; transition: 0.3s; }
+        .product:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        img { width: 100%; max-width: 250px; display: block; margin: 15px auto; border-radius: 10px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; transition: 0.3s; }
         button:hover { background-color: #45a049; }
+        p { color: #555; font-size: 15px; }
+        .price { font-weight: bold; font-size: 18px; color: #222; margin-top: 5px; }
     </style>
 </head>
 <body>
-    <h1>Магазин RezinaUzBot</h1>
+    <h1>🛒 Магазин RezinaUzBot</h1>
     <div id="catalog"></div>
 
     <script>
         async function loadProducts() {
-            const response = await fetch("data.json"); // JSON с категориями и товарами
+            const response = await fetch("data.json");
             const data = await response.json();
             const catalogDiv = document.getElementById("catalog");
 
@@ -37,7 +41,7 @@
                         <h3>${product.name}</h3>
                         <img src="https://api.telegram.org/file/bot<YOUR_BOT_TOKEN>/${product.photo_url}" alt="${product.name}">
                         <p>${product.description}</p>
-                        <p><b>Цена: </b>${product.price}₽</p>
+                        <p class="price">Цена: ${product.price}₽</p>
                         <button onclick='orderProduct("${product.name}", ${product.price})'>Заказать</button>
                     `;
                     catDiv.appendChild(productDiv);
