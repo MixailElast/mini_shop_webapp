@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛍 Онлайн-магазин</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            color: #6a0dad;
+        }
+        header p {
+            color: #555;
+            font-size: 1.2em;
+        }
+        img.logo {
+            width: 140px;
+            margin-top: 20px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
+            margin: 0 0 10px;
+        }
+        .product-card button {
+            background-color: #6a0dad;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .product-card button:hover {
+            background-color: #580d91;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Shop Icon">
+        <h1>🛍 Онлайн-магазин</h1>
+        <p>Посмотрите демонстрацию карточек товаров.</p>
+    </header>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046870.png" alt="Товар 1">
+            <h3>Товар 1</h3>
+            <p>Описание товара №1</p>
+            <button>В корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" alt="Товар 2">
+            <h3>Товар 2</h3>
+            <p>Описание товара №2</p>
+            <button>В корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046861.png" alt="Товар 3">
+            <h3>Товар 3</h3>
+            <p>Описание товара №3</p>
+            <button>В корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046882.png" alt="Товар 4">
+            <h3>Товар 4</h3>
+            <p>Описание товара №4</p>
+            <button>В корзину</button>
+        </div>
+    </div>
+</body>
+</html>

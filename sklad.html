@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📦 Складской учёт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            color: #003366;
+        }
+        header p {
+            color: #333;
+            font-size: 1.2em;
+        }
+        img.logo {
+            width: 150px;
+            margin-top: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            background-color: #003366;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background-color: #004080;
+        }
+        .products {
+            margin-top: 30px;
+        }
+        .products h2 {
+            font-size: 1.5em;
+            color: #003366;
+        }
+        ul.product-list {
+            list-style: none;
+            padding: 0;
+        }
+        ul.product-list li {
+            background: #f0f8ff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Warehouse Icon">
+        <h1>📦 Складской учёт</h1>
+        <p>Добавьте товар в складскую систему и просмотрите список.</p>
+    </header>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="productName">Название товара</label>
+            <input type="text" id="productName" placeholder="Введите название">
+        </div>
+        <div class="form-group">
+            <label for="productQty">Количество</label>
+            <input type="number" id="productQty" placeholder="Введите количество">
+        </div>
+        <button onclick="addProduct()">Добавить товар</button>
+
+        <div class="products">
+            <h2>Товары на складе:</h2>
+            <ul class="product-list" id="productList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function addProduct() {
+            const name = document.getElementById('productName').value;
+            const qty = document.getElementById('productQty').value;
+
+            if (name && qty) {
+                const list = document.getElementById('productList');
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${name} (x${qty})</span> <span>${new Date().toLocaleDateString()}</span>`;
+                list.appendChild(li);
+
+                document.getElementById('productName').value = '';
+                document.getElementById('productQty').value = '';
+            } else {
+                alert('Пожалуйста, заполните все поля.');
+            }
+        }
+    </script>
+</body>
+</html>

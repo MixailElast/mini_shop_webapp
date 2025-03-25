@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📅 Бронирование</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            color: #d2691e;
+        }
+        header p {
+            color: #444;
+            font-size: 1.2em;
+        }
+        img.logo {
+            width: 140px;
+            margin-top: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            background-color: #d2691e;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background-color: #b85c18;
+        }
+        .bookings {
+            margin-top: 30px;
+        }
+        .bookings h2 {
+            font-size: 1.5em;
+            color: #d2691e;
+        }
+        ul.booking-list {
+            list-style: none;
+            padding: 0;
+        }
+        ul.booking-list li {
+            background: #fff4e6;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/2920/2920236.png" alt="Booking Icon">
+        <h1>📅 Бронирование</h1>
+        <p>Оставьте заявку на бронирование и следите за своим списком.</p>
+    </header>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="clientName">Ваше имя</label>
+            <input type="text" id="clientName" placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+            <label for="bookingDate">Дата бронирования</label>
+            <input type="date" id="bookingDate">
+        </div>
+        <button onclick="addBooking()">Забронировать</button>
+
+        <div class="bookings">
+            <h2>Ваши бронирования:</h2>
+            <ul class="booking-list" id="bookingList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function addBooking() {
+            const name = document.getElementById('clientName').value;
+            const date = document.getElementById('bookingDate').value;
+
+            if (name && date) {
+                const list = document.getElementById('bookingList');
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${name}</span> <span>${new Date(date).toLocaleDateString()}</span>`;
+                list.appendChild(li);
+
+                document.getElementById('clientName').value = '';
+                document.getElementById('bookingDate').value = '';
+            } else {
+                alert('Пожалуйста, заполните все поля.');
+            }
+        }
+    </script>
+</body>
+</html>
